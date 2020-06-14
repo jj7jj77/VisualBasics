@@ -1,0 +1,34 @@
+Public Class StateAbbreviationsProject
+
+    Private Sub btnFlorida_Click(sender As Object, e As EventArgs) Handles btnFlorida.Click
+        lblAbbreviation.Text = "FL"
+    End Sub
+
+    Private Sub btnKansas_Click(sender As Object, e As EventArgs) Handles btnKansas.Click
+        lblAbbreviation.Text = "KS"
+    End Sub
+
+    Private Sub btnNewYork_Click(sender As Object, e As EventArgs) Handles btnNewYork.Click
+        lblAbbreviation.Text = "NY"
+    End Sub
+
+    Private Sub btnOhio_Click(sender As Object, e As EventArgs) Handles btnOhio.Click
+        lblAbbreviation.Text = "OH"
+    End Sub
+
+    Private Sub btnMontana_Click(sender As Object, e As EventArgs) Handles btnMontana.Click
+        lblAbbreviation.Text = "MT"
+    End Sub
+
+    Private Sub btnWashington_Click(sender As Object, e As EventArgs) Handles btnWashington.Click
+        lblAbbreviation.Text = "WA"
+    End Sub
+
+    Private Sub lblMessage_Click(sender As Object, e As EventArgs) Handles lblMessage.Click
+        lblMessage.Text = "What State would you like to Travel to and learn what it's State Abbreviation is?"
+    End Sub
+
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        Me.Close()
+    End Sub
+End Class
