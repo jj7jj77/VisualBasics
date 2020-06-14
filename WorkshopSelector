@@ -1,0 +1,118 @@
+Public Class Form1
+    Private Sub btnAddWrkShp_Click(sender As Object, e As EventArgs) Handles btnAddWrkShp.Click
+
+        'Declare the variables
+        Dim Input As String 'Holds selected Workshop and Location
+        Dim Workshop As String 'Holds Workshop string
+        Dim Location As String 'holds Location string
+
+        Dim RegFee As Double 'holds the registration fee double
+        Dim NumbOfDays As Double 'holds the number of days double
+        Dim LogFee As Double 'holds the lodge cost per day double
+
+        Dim TotalCost As Double 'holds the total cost double
+        Dim WorkshopTotal As Double 'holds the workshop total double
+
+        lstCost.Items.Add(NumbOfDays)
+        lstCost.Items.Add(RegFee)
+        lstCost.Items.Add(LogFee)
+        lstCost.Items.Add(TotalCost)
+
+        'SelectItem Workshop
+        Workshop = lstWorkshop.SelectedItem.ToString()
+
+        'SelectItem Location
+        Location = lstLocation.SelectedItem.ToString()
+
+        'This is good and done
+        If lstWorkshop.SelectedIndex = -1 Then
+            MessageBox.Show("Pick a Workshop")
+        ElseIf lstLocation.SelectedIndex = -1 Then
+            MessageBox.Show("Pick a Location")
+        ElseIf lstWorkshop.SelectedItem Is Nothing Then
+            MessageBox.Show("Please choose a workshop first")
+        Else
+            Input = lstWorkshop.SelectedItem.ToString() & " and " & lstLocation.SelectedItem.ToString()
+            MessageBox.Show("You selected " & Input)
+        End If
+
+
+        'Workshop Selection
+        If lstWorkshop.SelectedIndex = 0 Then
+            RegFee = 595
+            NumbOfDays = 3
+            lstCost.Items.Insert(0, "Handling Stress : " & RegFee.ToString("C"))
+        ElseIf lstWorkshop.SelectedIndex = 1 Then
+            RegFee = 695
+            NumbOfDays = 3
+            lstCost.Items.Insert(0, "Time Management : " & RegFee.ToString("C"))
+        ElseIf lstWorkshop.SelectedIndex = 2 Then
+            RegFee = 995
+            NumbOfDays = 3
+            lstCost.Items.Insert(0, "Supervision Skills : " & RegFee.ToString("C"))
+        ElseIf lstWorkshop.SelectedIndex = 3 Then
+            RegFee = 1295
+            NumbOfDays = 5
+            lstCost.Items.Insert(0, "Negotation : " & RegFee.ToString("C"))
+        ElseIf lstWorkshop.SelectedIndex = 4 Then
+            RegFee = 395
+            NumbOfDays = 1
+            lstCost.Items.Insert(0, "How to Interview : " & RegFee.ToString("C"))
+        End If
+
+        'Location Selection
+        If lstLocation.SelectedIndex = 0 Then
+            LogFee = 95 * NumbOfDays
+            lstCost.Items.Insert(0, "Austin : " & LogFee)
+        ElseIf lstLocation.SelectedIndex = 1 Then
+            LogFee = 125 * NumbOfDays
+            lstCost.Items.Insert(0, "Chicago : " & LogFee)
+        ElseIf lstLocation.SelectedIndex = 2 Then
+            LogFee = 110 * NumbOfDays
+            lstCost.Items.Insert(0, "Dallas : " & LogFee)
+        ElseIf lstLocation.SelectedIndex = 3 Then
+            LogFee = 100 * NumbOfDays
+            lstCost.Items.Insert(0, "Orlando : " & LogFee)
+        ElseIf lstLocation.SelectedIndex = 4 Then
+            LogFee = 92 * NumbOfDays
+            lstCost.Items.Insert(0, "Phoenix : " & LogFee)
+        ElseIf lstLocation.SelectedIndex = 5 Then
+            LogFee = 90 * NumbOfDays
+            lstCost.Items.Insert(0, "Raleigh : " & LogFee)
+        End If
+
+        ' Display the total, formatted as currency.
+        TotalCost = RegFee + LogFee
+
+        lstCost.Items.Add("Workshop Total : " & TotalCost.ToString("C"))
+
+    End Sub
+
+    Private Sub btnCalcTotal_Click(sender As Object, e As EventArgs) Handles btnCalcTotal.Click
+        'Calculating
+        Dim TotalCost As Double
+        Dim RegFee As Double
+        Dim LogFee As Double
+        Dim WorkshopTotal As Double
+
+        TotalCost = RegFee + LogFee
+        WorkshopTotal = TotalCost
+        lblTotalCost.Text = TotalCost.ToString("C")
+    End Sub
+
+
+    'Done all below
+    Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+        'Resets the List Boxes
+        lstWorkshop.Items.Clear()
+        lstLocation.Items.Clear()
+        lstCost.Items.Clear()
+
+        lstWorkshop.Focus()
+    End Sub
+
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        Me.Close()
+    End Sub
+
+End Class
