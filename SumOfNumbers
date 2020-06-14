@@ -1,0 +1,23 @@
+Public Class SumOfNumbers
+
+    Private Sub btnEnterNumbs_Click(sender As Object, e As EventArgs) Handles btnEnterNumbs.Click
+
+        'Declare Variable
+        Dim strUserInput As String
+        Dim sum As Integer = 0
+
+        Do
+            strUserInput = InputBox("Enter a postive integer value: ", "Input Needed")
+            If Integer.TryParse(strUserInput, sum) Then
+                MessageBox.Show("The sum of numbers of 1 through  " & sum & "  is " & Enumerable.Range(1, sum).Sum)
+                Exit Do
+            Else
+                MessageBox.Show("Error: Number is negative, try again")
+            End If
+        Loop While sum < 1
+
+    End Sub
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        Me.Close()
+    End Sub
+End Class
