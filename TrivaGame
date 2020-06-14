@@ -1,0 +1,335 @@
+//Each class is it's own sepaate VB file
+
+Public Class TriviaIntro
+
+    Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
+        TriviaQ1.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub lblRule1_Click(sender As Object, e As EventArgs) Handles lblRule1.Click
+        lblRule1.Text = "1. You have 2 minutes to answer each question."
+    End Sub
+
+    Private Sub LlblRules2_Click(sender As Object, e As EventArgs) Handles lblRule2.Click
+        lblRule2.Text = "2. Each question is 1 point each."
+    End Sub
+
+    Private Sub lblRules3_Click(sender As Object, e As EventArgs) Handles lblRule3.Click
+        lblRule3.Text = "3. Have Fun!"
+    End Sub
+
+    Private Sub ToolTip1_Popup(sender As Object, e As PopupEventArgs) 
+
+    End Sub
+End Class
+
+Public Class TriviaQ1
+    Private Sub TriviaQ1_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        TimerMain.Enabled = True
+    End Sub
+
+    Private Sub btnAnswer_Click(sender As Object, e As EventArgs) Handles btnAnswer.Click
+        If radBtn4.Checked = True Then
+            correct = correct + 1
+        End If
+        Me.Hide()
+        TriviaQ2.Show()
+    End Sub
+
+    Private Sub lblQuestion_Click(sender As Object, e As EventArgs) Handles lblQuestion.Click
+        radBtn1.Checked = False
+        radBtn2.Checked = False
+        radBtn3.Checked = False
+        radBtn4.Checked = False
+        radBtn5.Checked = False
+    End Sub
+
+    Private Sub TimerMain_Tick(sender As Object, e As EventArgs) Handles TimerMain.Tick
+        TimerMain.Enabled = False
+        Me.Hide()
+        TriviaQ2.Show()
+    End Sub
+End Class
+
+Public Class TriviaQ2
+    Private Sub TriviaQ2_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        TimerMain.Enabled = True
+    End Sub
+
+    Private Sub btnAnswer_Click(sender As Object, e As EventArgs) Handles btnAnswer.Click
+        If radBtn3.Checked = True Then
+            correct = correct + 1
+        End If
+        Me.Hide()
+        TriviaQ3.Show()
+    End Sub
+
+    Private Sub lblQuestion_Click(sender As Object, e As EventArgs) Handles lblQuestion.Click
+        radBtn1.Checked = False
+        radBtn2.Checked = False
+        radBtn3.Checked = False
+        radBtn4.Checked = False
+    End Sub
+
+    Private Sub TimerMain_Tick(sender As Object, e As EventArgs) Handles TimerMain.Tick
+        TimerMain.Enabled = False
+        Me.Hide()
+        TriviaQ3.Show()
+    End Sub
+End Class
+
+Public Class TriviaQ3
+    Private Sub TriviaQ1_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        TimerMain.Enabled = True
+    End Sub
+
+    Private Sub btnAnswer_Click(sender As Object, e As EventArgs) Handles btnAnswer.Click
+        If radBtn1.Checked = True Then
+            correct = correct + 1
+        End If
+        Me.Hide()
+        TriviaQ4.Show()
+    End Sub
+
+    Private Sub lblQuestion_Click(sender As Object, e As EventArgs) Handles lblQuestion.Click
+        radBtn1.Checked = False
+        radBtn2.Checked = False
+        radBtn3.Checked = False
+        radBtn4.Checked = False
+    End Sub
+
+    Private Sub TimerMain_Tick(sender As Object, e As EventArgs) Handles TimerMain.Tick
+        TimerMain.Enabled = False
+        Me.Hide()
+        TriviaQ4.Show()
+    End Sub
+End Class
+
+Public Class TriviaQ4
+    Private Sub TriviaQ1_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        TimerMain.Enabled = True
+    End Sub
+
+    Private Sub btnAnswer_Click(sender As Object, e As EventArgs) Handles btnAnswer.Click
+        If radBtn2.Checked = True Then
+            correct = correct + 1
+        End If
+        Me.Hide()
+        TriviaQ5.Show()
+    End Sub
+
+    Private Sub lblQuestion_Click(sender As Object, e As EventArgs) Handles lblQuestion.Click
+        radBtn1.Checked = False
+        radBtn2.Checked = False
+        radBtn3.Checked = False
+        radBtn4.Checked = False
+    End Sub
+
+    Private Sub TimerMain_Tick(sender As Object, e As EventArgs) Handles TimerMain.Tick
+        TimerMain.Enabled = False
+        Me.Hide()
+        TriviaQ5.Show()
+    End Sub
+End Class
+
+Public Class TriviaQ5
+    Private Sub TriviaQ1_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        TimerMain.Enabled = True
+    End Sub
+
+    Private Sub btnAnswer_Click(sender As Object, e As EventArgs) Handles btnAnswer.Click
+        If radBtn1.Checked = True Then
+            correct = correct + 1
+        End If
+        Me.Hide()
+        TriviaQ6.Show()
+    End Sub
+
+    Private Sub lblQuestion_Click(sender As Object, e As EventArgs) Handles lblQuestion.Click
+        radBtn1.Checked = False
+        radBtn2.Checked = False
+        radBtn3.Checked = False
+        radBtn4.Checked = False
+    End Sub
+
+    Private Sub TimerMain_Tick(sender As Object, e As EventArgs) Handles TimerMain.Tick
+        TimerMain.Enabled = False
+        Me.Hide()
+        TriviaQ6.Show()
+    End Sub
+End Class
+
+Public Class TriviaQ6
+    Private Sub TriviaQ1_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        TimerMain.Enabled = True
+    End Sub
+
+    Private Sub btnAnswer_Click(sender As Object, e As EventArgs) Handles btnAnswer.Click
+        If radBtn3.Checked = True Then
+            correct = correct + 1
+        End If
+        Me.Hide()
+        TriviaQ7.Show()
+    End Sub
+
+    Private Sub lblQuestion_Click(sender As Object, e As EventArgs) Handles lblQuestion.Click
+        radBtn1.Checked = False
+        radBtn2.Checked = False
+        radBtn3.Checked = False
+        radBtn4.Checked = False
+    End Sub
+
+    Private Sub TimerMain_Tick(sender As Object, e As EventArgs) Handles TimerMain.Tick
+        TimerMain.Enabled = False
+        Me.Hide()
+        TriviaQ7.Show()
+    End Sub
+End Class
+
+Public Class TriviaQ7
+    Private Sub TriviaQ1_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        TimerMain.Enabled = True
+    End Sub
+
+    Private Sub btnAnswer_Click(sender As Object, e As EventArgs) Handles btnAnswer.Click
+        If radBtn2.Checked = True Then
+            correct = correct + 1
+        End If
+        Me.Hide()
+        TriviaQ8.Show()
+    End Sub
+
+    Private Sub lblQuestion_Click(sender As Object, e As EventArgs) Handles lblQuestion.Click
+        radBtn1.Checked = False
+        radBtn2.Checked = False
+        radBtn3.Checked = False
+        radBtn4.Checked = False
+    End Sub
+
+    Private Sub TimerMain_Tick(sender As Object, e As EventArgs) Handles TimerMain.Tick
+        TimerMain.Enabled = False
+        Me.Hide()
+        TriviaQ8.Show()
+    End Sub
+End Class
+
+Public Class TriviaQ8
+    Private Sub TriviaQ1_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        TimerMain.Enabled = True
+    End Sub
+
+    Private Sub btnAnswer_Click(sender As Object, e As EventArgs) Handles btnAnswer.Click
+        If radBtn3.Checked = True Then
+            correct = correct + 1
+        End If
+        Me.Hide()
+        TriviaQ9.Show()
+    End Sub
+
+    Private Sub lblQuestion_Click(sender As Object, e As EventArgs) Handles lblQuestion.Click
+        radBtn1.Checked = False
+        radBtn2.Checked = False
+        radBtn3.Checked = False
+        radBtn4.Checked = False
+    End Sub
+
+    Private Sub TimerMain_Tick(sender As Object, e As EventArgs) Handles TimerMain.Tick
+        TimerMain.Enabled = False
+        Me.Hide()
+        TriviaQ9.Show()
+    End Sub
+End Class
+
+Public Class TriviaQ9
+    Private Sub TriviaQ1_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        TimerMain.Enabled = True
+    End Sub
+
+    Private Sub btnAnswer_Click(sender As Object, e As EventArgs) Handles btnAnswer.Click
+        If radBtn1.Checked = True Then
+            correct = correct + 1
+        End If
+        Me.Hide()
+        TriviaQ10.Show()
+    End Sub
+
+    Private Sub lblQuestion_Click(sender As Object, e As EventArgs) Handles lblQuestion.Click
+        radBtn1.Checked = False
+        radBtn2.Checked = False
+        radBtn3.Checked = False
+        radBtn4.Checked = False
+    End Sub
+
+    Private Sub TimerMain_Tick(sender As Object, e As EventArgs) Handles TimerMain.Tick
+        TimerMain.Enabled = False
+        Me.Hide()
+        TriviaQ10.Show()
+    End Sub
+End Class
+
+Public Class TriviaQ10
+    Private Sub TriviaQ1_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        TimerMain.Enabled = True
+    End Sub
+
+    Private Sub btnAnswer_Click(sender As Object, e As EventArgs) Handles btnAnswer.Click
+        If radBtn4.Checked = True Then
+            correct = correct + 1
+        End If
+        Me.Hide()
+        TriviaFinal.Show()
+    End Sub
+
+    Private Sub lblQuestion_Click(sender As Object, e As EventArgs) Handles lblQuestion.Click
+        radBtn1.Checked = False
+        radBtn2.Checked = False
+        radBtn3.Checked = False
+        radBtn4.Checked = False
+    End Sub
+
+    Private Sub TimerMain_Tick(sender As Object, e As EventArgs) Handles TimerMain.Tick
+        TimerMain.Enabled = False
+        Me.Hide()
+        TriviaFinal.Show()
+    End Sub
+End Class
+
+Public Class TriviaFinal
+    Private Sub TriviaFinal_Activate(sender As Object, e As EventArgs) Handles MyBase.Activated
+        lblCorrect2.Text = CStr(correct)
+        incorrect = 10 - correct
+        lblIncorrect2.Text = CStr(incorrect)
+    End Sub
+
+    Private Sub btnPlayAgain_Click(sender As Object, e As EventArgs) Handles btnPlayAgain.Click
+        correct = 0
+        incorrect = 0
+        TriviaIntro.Show()
+    End Sub
+
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        Me.Close()
+    End Sub
+
+    Private Sub btnMessage_Click(sender As Object, e As EventArgs) Handles btnMessage.Click
+        If correct = 10 Then
+            MsgBox("You are a King of Trivia", MsgBoxStyle.OkCancel, "Score")
+        ElseIf correct = 8 Then
+            MsgBox("You are the Prince of Trivia", MsgBoxStyle.OkCancel, "Score")
+        ElseIf correct = 6 Then
+            MsgBox("You are the Duke of Trivia", MsgBoxStyle.OkCancel, "Score")
+        ElseIf correct = 4 Then
+            MsgBox("You are the Earl of Trivia", MsgBoxStyle.OkCancel, "Score")
+        ElseIf correct = 2 Then
+            MsgBox("You are the Baron of Trivia", MsgBoxStyle.OkCancel, "Score")
+        Else
+            MsgBox("You are the Lord of Trivia", MsgBoxStyle.OkCancel, "Score")
+        End If
+    End Sub
+
+End Class
+
+Module ModuleTrivia
+    Friend correct, incorrect As Integer
+End Module
