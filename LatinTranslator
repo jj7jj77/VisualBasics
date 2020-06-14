@@ -1,0 +1,27 @@
+Public Class LatinTranslator
+
+    'Sinister button
+    Private Sub btnSinister1_Click(sender As Object, e As EventArgs) Handles btnSinister1.Click
+        btnSinister1.Text = "Sinister"
+    End Sub
+    Private Sub btnSinister_Click(sender As Object, e As EventArgs) Handles btnSinister1.Click
+        lblTranslation.Text = "Left"
+    End Sub
+
+    'Medium button
+    Private Sub btnMedium2_Click(sender As Object, e As EventArgs) Handles btnMedium2.Click
+        btnMedium2.Text = "Medium"
+    End Sub
+    Private Sub lblMedium_Click(sender As Object, e As EventArgs) Handles btnMedium2.Click
+        lblTranslation.Text = "Middle"
+    End Sub
+
+    'Dexter button
+    Private Sub btnDexter3_Click(sender As Object, e As EventArgs) Handles btnDexter3.Click
+        btnDexter3.Text = "Dexter"
+    End Sub
+    Private Sub btnDexter_Click(sender As Object, e As EventArgs) Handles btnDexter3.Click
+        lblTranslation.Text = "Right"
+    End Sub
+
+End Class
