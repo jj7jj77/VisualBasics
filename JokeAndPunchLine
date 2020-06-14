@@ -1,0 +1,18 @@
+Public Class Joke
+    Private Sub btnSetup_Click(sender As Object, e As EventArgs) Handles btnSetup.Click
+        lblSetup.Text = "Why do Java programmer have to wear glasses?"
+    End Sub
+
+    Private Sub btnPunch_Click(sender As Object, e As EventArgs) Handles btnPunch.Click
+        lblPunch.Text = "Because they don't C#"
+    End Sub
+
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        Me.Close()
+    End Sub
+
+    Private Sub btnLeave_Click(sender As Object, e As EventArgs) Handles btnLeave.Click
+        Me.Close()
+    End Sub
+
+End Class
