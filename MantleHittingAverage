@@ -1,0 +1,123 @@
+//Each class is a separate VB file
+
+Public Class Mantle
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles NextFormTimer.Tick
+        Me.Hide()    'hides train form after child form shown
+        Hitting.Show()
+        NextFormTimer.Enabled = False    'ends timer
+    End Sub
+
+    'PUT control box in Properties to false to take the X out when finalizing application
+    Private Sub Train_Load(sender As Object, e As EventArgs) Handles MyBase.Activated
+        MantleTimer.Enabled = True
+        NextFormTimer.Enabled = True
+    End Sub
+
+    Private Sub MantleTimer_Tick(sender As Object, e As EventArgs) Handles MantleTimer.Tick
+        ' Move the graphic across the form. 
+        Static XInteger As Integer = MantlePicBox.Left
+        Static YInteger As Integer = MantlePicBox.Top
+        Static WidthInteger As Integer = MantlePicBox.Width
+        Static HeightInteger As Integer = MantlePicBox.Height
+
+        XInteger += 5
+        YInteger += 5
+        If YInteger > Me.Height - WidthInteger Then
+            XInteger += 0
+            YInteger = 0
+        End If
+
+        'Move Image.
+        MantlePicBox.SetBounds(XInteger, YInteger, WidthInteger, HeightInteger)
+    End Sub
+
+    'Just in case
+    Private Sub NextFormBtn_Click(sender As Object, e As EventArgs) Handles NextFormBtn.Click
+        Me.Close()
+        Hitting.Show()
+    End Sub
+End Class
+
+Public Class Hitting
+    Private Sub HittingBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles HittingBindingNavigatorSaveItem.Click
+
+        Me.Validate()
+        Me.HittingBindingSource.EndEdit()
+        Me.TableAdapterManager.UpdateAll(Me.Yankees_for_mockDataSet)
+    End Sub
+
+    Private Sub Hitting_Load(sender As Object, e As EventArgs) Handles MyBase.Activated
+        'TODO: This line of code loads data into the 'YankeesDataSet.Hitting' table. 
+        'You can move, Or remove it, as needed
+        Me.HittingTableAdapter.Fill(Me.Yankees_for_mockDataSet.Hitting)
+    End Sub
+
+    Private Sub SelectBtn_Click(sender As Object, e As EventArgs) Handles SelectBtn.Click
+        AtBats = CInt(AtBatsTextBox.Text)
+        LastName = (LastNameTextBox.Text)
+        Doubles = CInt(DoublesTextBox.Text)
+        Triple = CInt(TriplesTextBox.Text)
+        HomeRuns = CInt(HomerunsTextBox.Text)
+        Me.Hide()  'To hide Hitting Form
+        Average.Show() 'show the Average Form
+    End Sub
+End Class
+
+Public Class Average
+    Private Sub Average_Load(sender As Object, e As EventArgs) Handles MyBase.Activated
+        lblAtBats.Text = AtBats
+        lblLastName.Text = LastName
+        lblDoubles.Text = Doubles
+        lblTriples.Text = YankeesModule.Triple
+        lblHomeRuns.Text = HomeRuns
+        TotalBases = 2 * Doubles + 3 * YankeesModule.Triple + 4 * HomeRuns
+        lblTotalBases.Text = TotalBases
+        ExtraBaseAvg = TotalBases / AtBats
+        lblExtraBaseAvg.Text = Format(CDec((ExtraBaseAvg)))
+    End Sub
+
+    Private Sub NextBtn_Click(sender As Object, e As EventArgs) Handles NextBtn.Click
+        Me.Hide()
+        Triples.Show()
+    End Sub
+End Class
+
+Public Class Triples
+    Private Sub Triples_Load(sender As Object, e As EventArgs) Handles MyBase.Activated
+        Hitting.HittingTableAdapter.Fill(Hitting.Yankees_for_mockDataSet.Hitting)
+
+        Dim Totaltriples As Integer
+        Dim row As yankees_for_mockDataSet.HittingRow
+
+        For Each row In Hitting.yankees_for_mockDataSet.Hitting.Rows
+            Totaltriples += row.Triples
+
+        Next
+        lblTriples.Text = Totaltriples
+
+        'TODO: This line of code loads data into the 'yankees_for_mockDataSet.Hitting' table. 
+        'You can move , Or remove it, as needed
+        TimeStatus.Text = Now.ToLongTimeString
+        DateStatus.Text = Now.ToLongDateString
+    End Sub
+
+    Private Sub BackBtn_Click(sender As Object, e As EventArgs) Handles BackBtn.Click
+        Hitting.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub BackToolStripButton_Click(sender As Object, e As EventArgs) Handles BackToolStripButton.Click
+        Average.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub EndToolStripButton_Click(sender As Object, e As EventArgs) Handles EndToolStripButton.Click
+        End 'end the program
+    End Sub
+End Class
+
+Module YankeesModule
+    Friend inrecordposition, AtBats, Doubles, Triple, HomeRuns, TotalBases As Integer
+    Friend ExtraBaseAvg As Decimal
+    Friend LastName As String
+End Module
