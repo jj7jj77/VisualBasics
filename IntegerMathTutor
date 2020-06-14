@@ -1,0 +1,49 @@
+//Never Finsihed This
+
+Public Class Form1
+    'Declare Integer Variables
+    Dim intNum1 As Integer
+    Dim intNum2 As Integer
+    Dim intTotal As Integer
+
+    'Create a Random Object
+    Dim rand As New Random
+
+    'Get a random integer and assign it to intNum
+    intNum1 = rand.Next(20)
+    intNum2 = rand.Next(120)
+
+    Private Sub btnCheck_Click(sender As Object, e As EventArgs) Handles btnCheck.Click
+        If intNum1 = rand.Next(120) Then
+            intNum2 = intNum1 + intNum2
+            lblCorrectAnswer.Text = "Correct"
+        End If
+    End Sub
+
+    Private Sub radBtnAdd_CheckedChanged(sender As Object, e As EventArgs) Handles radBtnAdd.CheckedChanged
+
+    End Sub
+
+    Private Sub radBtnSub_CheckedChanged(sender As Object, e As EventArgs) Handles radBtnSub.CheckedChanged
+
+    End Sub
+
+    Private Sub radBtnMulti_CheckedChanged(sender As Object, e As EventArgs) Handles radBtnMulti.CheckedChanged
+
+    End Sub
+
+    Private Sub radBtnDiv_CheckedChanged(sender As Object, e As EventArgs) Handles radBtnDiv.CheckedChanged
+
+    End Sub
+
+    Private Sub tbxAnswer_TextChanged(sender As Object, e As EventArgs) Handles txtAnswer.TextChanged
+        '= (intNum + intNum)
+        txtAnswer.Text = "Correct"
+    End Sub
+
+    Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
+        intNum1 = CStr(Random.Next(1, 20))
+        intNum2 = CStr(Random.Next(20, 120))
+    End Sub
+
+End Class
