@@ -1,0 +1,181 @@
+//Each Class is a separate VB file
+
+Public Class ParentOfChild
+
+    'Module-level declarations
+    Dim ChildOneCountInteger As Integer
+    Dim ChildTwoCountInteger As Integer
+
+    'enable the timer
+    Private Sub ClockTimer_Tick(sender As Object, e As EventArgs) Handles ClockTimer.Tick
+        DateToolStripStatusLabel.Text = Now.ToShortDateString()
+        TimeToolStripStatusLabel.Text = Now.ToLongDateString()
+    End Sub
+
+    'Display the data and time in the status bar
+    Private Sub Parent_Load(sender As Object, e As EventArgs) Handles MyBase.Activated
+        ClockTimer_Tick(sender, e)
+    End Sub
+
+    'ends the program
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        Me.Close()
+    End Sub
+
+    Private Sub ChildOneFormToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChildOneFormToolStripMenuItem.Click, ChildOneToolStripButton.Click
+        'Displays the Child One Form
+        Dim AChildOneForm As New ChildOneForm
+        With AChildOneForm
+            .MdiParent = Me  'parent of that child form
+            ChildOneCountInteger += 1 ' label child document
+            .Text = "Child One Document " & ChildOneCountInteger.ToString()
+            .Show()
+        End With
+    End Sub
+
+    Private Sub ChildTwoFormToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChildTwoFormToolStripMenuItem.Click, ChildTwoToolStripButton.Click
+        'Display Child Two Form
+        Dim AChildTwoForm As New ChildTwoForm
+        With AChildTwoForm
+            .MdiParent = Me
+            ChildTwoCountInteger += 1
+            .Text = "Child Two Document " & ChildTwoCountInteger.ToString()
+            .Show()
+        End With
+    End Sub
+
+    Private Sub TileHorizontallyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TileHorizontallyToolStripMenuItem.Click
+        'Arrange the child forms horizontally
+        Me.LayoutMdi(MdiLayout.TileHorizontal)
+    End Sub
+
+    Private Sub TileVerticallyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TileVerticallyToolStripMenuItem.Click
+        'Arrande the child forms vertially
+        Me.LayoutMdi(MdiLayout.TileVertical)
+    End Sub
+
+    Private Sub CascadeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CascadeToolStripMenuItem.Click
+        'Cascade the child form
+        Me.LayoutMdi(MdiLayout.Cascade)
+    End Sub
+
+    Private Sub CalendarBtn_Click(sender As Object, e As EventArgs) Handles CalendarBtn.Click
+        Me.Close()
+        Calendar.Show()
+    End Sub
+End Class
+
+Public Class ChildOneForm
+    Private Sub CloseButton_Click(sender As Object, e As EventArgs) Handles CloseButton.Click
+
+        'Close the form
+        Me.Close()
+    End Sub
+End Class
+
+Public Class ChildTwoForm
+    Private Sub CloseButton_Click(sender As Object, e As EventArgs) Handles CloseButton.Click
+
+        'Close the form
+        Me.Close()
+    End Sub
+End Class
+
+Public Class Train
+
+    'PUT control box in Properties to false to take the X out when finalizing application
+    Private Sub Train_Load(sender As Object, e As EventArgs) Handles MyBase.Activated
+        TrainTimer.Enabled = True
+    End Sub
+
+    Private Sub TrainTimer_Tick(sender As Object, e As EventArgs) Handles TrainTimer.Tick
+        ' Move the graphic across the form. 
+        Static XInteger As Integer = TrainPictureBox.Left
+        Static YInteger As Integer = TrainPictureBox.Top
+        Static WidthInteger As Integer = TrainPictureBox.Width
+        Static HeightInteger As Integer = TrainPictureBox.Height
+
+        XInteger -= 10
+        TrainPictureBox.Left = 0
+        TrainPictureBox.Top = 0
+
+        YInteger += 10
+        XInteger += 10
+        TrainPictureBox.Left = 0
+        TrainPictureBox.Top= 0
+
+        ' Move image.
+        TrainPictureBox.SetBounds(XInteger, YInteger, WidthInteger, HeightInteger)
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Timer1.Enabled = False    'ends timer
+        Me.Hide()    'hides train form after child form shown
+        ParentOfChild.Show()
+    End Sub
+End Class
+
+Public Class Calendar
+
+    Private Sub DisplayGradBtn_Click(ByVal sender As Object, ByVal e As EventArgs) Handles DisplayGradBtn.Click
+        ' If the date is valid set the calendar and display.
+        Try
+            With GraduationDateTimePicker
+                .Value = Convert.ToDateTime(GradDateTxtBx.Text)
+                .Visible = True
+                MessageBox.Show("Enter a mm/dd/yyyy")
+            End With
+        Catch ex As Exception
+            MessageBox.Show("Invalid Date, put in mm/dd/yyyy")
+            GradDateTxtBx.Focus()
+        End Try
+    End Sub
+
+    Private Sub GraduationDateTimePicker_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles GraduationDateTimePicker.ValueChanged
+        ' Calculate the year when the calendar value changes.
+        Dim YrsLeftTxtBx As Integer
+        'Dim PastYearsInteger As Integer
+
+        With GraduationDateTimePicker.Value
+            'graduating this year.
+            If .Year = Now.Year Then
+                YrsLeftTxtBx = .Year - Now.Year
+                MessageBox.Show("You will be graduating this year!")
+
+                'graduating soon, maybe next year.
+            ElseIf .Year > Now.Year Then
+                YrsLeftTxtBx = .Year - Now.Year
+                '  MessageBox.Show("You are not graduating yet!")
+
+                'already graduated
+            ElseIf .Year < Now.Year Then
+                YrsLeftTxtBx = Now.Year - .Year
+                '  MessageBox.Show("You graduated  " & YearsInteger & " years ago!")
+
+            Else
+                MessageBox.Show("This is your year")
+            End If
+
+        End With
+
+        If YrsLeftTxtBx > 0 Then
+            YrsLeftTxtBx = YrsLeftTxtBx
+        End If
+
+    End Sub
+
+    Private Sub ClearBtn_Click(sender As Object, e As EventArgs) Handles ClearBtn.Click
+        GradDateTxtBx.Text = String.Empty
+        YrsLeftTxtBx.Text = String.Empty
+    End Sub
+
+    Private Sub ExitBtn_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ExitBtn.Click
+        'Terminate the project.
+        End
+    End Sub
+
+    Private Sub Calendar_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Activated
+        'Set the calendar to today's date.
+        GraduationDateTimePicker.Value = Today
+    End Sub
+End Class
