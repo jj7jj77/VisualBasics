@@ -20,26 +20,16 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub radBtnAdd_CheckedChanged(sender As Object, e As EventArgs) Handles radBtnAdd.CheckedChanged
+    Private sub btnshowAnswer_click(……) handles btnshowAnswer.Click
+	‘btnShowAnswer click isn't turns lblUnsolved Invisible and turn lblAnswer to Visible
+	lblAnswer.Visible = True
+	lblUnsolved.Visible = True
+End Sub
 
-    End Sub
-
-    Private Sub radBtnSub_CheckedChanged(sender As Object, e As EventArgs) Handles radBtnSub.CheckedChanged
-
-    End Sub
-
-    Private Sub radBtnMulti_CheckedChanged(sender As Object, e As EventArgs) Handles radBtnMulti.CheckedChanged
-
-    End Sub
-
-    Private Sub radBtnDiv_CheckedChanged(sender As Object, e As EventArgs) Handles radBtnDiv.CheckedChanged
-
-    End Sub
-
-    Private Sub tbxAnswer_TextChanged(sender As Object, e As EventArgs) Handles txtAnswer.TextChanged
-        '= (intNum + intNum)
-        txtAnswer.Text = "Correct"
-    End Sub
+Private sub btnClose_click(……) handles btnClose.Click
+	‘ Close application when btnClose it's clicked
+	Close()
+End Sub
 
     Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
         intNum1 = CStr(Random.Next(1, 20))
